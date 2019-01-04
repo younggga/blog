@@ -2,13 +2,22 @@
 title: 手把手教你使用 VuePress 搭建个人博客
 sidebar: auto
 sidebarDepth: 2
+<style lang="sass">
+  .sidebar::-webkit-scrollbar {
+     width 10px
+     height 1px
+   }
+   .sidebar::-webkit-scrollbar-thumb {
+     border-radius 10px
+     -webkit-box-shadow inset 0 0 5px rgba(0,0,0,0.2)
+     background #eaeaea
+   }
+
+</style>
 ---
-
-# 手把手教你使用 VuePress 搭建个人博客
-
 ::: tip 提示
 有阅读障碍的同学，可以跳过第一至四节，下载我写好的[工具包](https://github.com/zhangyunchencc/vuepress-devkit.git): 
-`git clone https://github.com/zhangyunchencc/vuepress-devkit.git` 然后从第五节开始看。
+`git clone https://github.com/zhangyunchencc/vuepress-devkit.git` 然后从[第五节](#五、部署上线)开始看。
 :::
 
 ## 一、为什么你需要一个博客？
@@ -72,9 +81,9 @@ module.exports = {
   },
   themeConfig: {
     nav:[ // 导航栏配置
-      {text: '前端基础', link: '/accumulate/' },
-      {text: '算法题库', link: '/algorithm/'},
-      {text: '微博', link: 'https://baidu.com'}      
+      {text: '前端基础', link: '/primer/' },
+      {text: '算法题库', link: advance},
+      {text: 'Github', link: 'https://github.com/younggga/blog'}      
     ],
     sidebar: 'auto', // 侧边栏配置
     sidebarDepth: 2, // 侧边栏显示2级
@@ -84,7 +93,7 @@ module.exports = {
 
 ### 在 package.json 文件里添加两个启动命令
 ```json
-"scripts": {
+"scripts" : {
   "dev": "vuepress dev docs",
   "build": "vuepress build docs"
 }
@@ -388,5 +397,3 @@ cd -
 
 
 张韵晨 | Front End Engineer | 2018.10
-
-

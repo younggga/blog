@@ -13,6 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vuepress/plugin-blog": "^1.0.0-alpha.0",
     "vuepress": "^0.14.4"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0"
   }
 }
