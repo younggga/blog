@@ -1,45 +1,33 @@
 ---
-title: 手把手教你使用 VuePress 搭建个人博客
+title: 使用 VuePress 搭建个人博客
 sidebar: auto
 sidebarDepth: 2
-<style lang="sass">
-  .sidebar::-webkit-scrollbar {
-     width 10px
-     height 1px
-   }
-   .sidebar::-webkit-scrollbar-thumb {
-     border-radius 10px
-     -webkit-box-shadow inset 0 0 5px rgba(0,0,0,0.2)
-     background #eaeaea
-   }
-
-</style>
 ---
 ::: tip 提示
 有阅读障碍的同学，可以跳过第一至四节，下载我写好的[工具包](https://github.com/zhangyunchencc/vuepress-devkit.git): 
-`git clone https://github.com/zhangyunchencc/vuepress-devkit.git` 然后从[第五节](#五、部署上线)开始看。
+`git clone https://github.com/zhangyunchencc/vuepress-devkit.git` 然后从[部署上线](#部署上线)开始看。
 :::
 
-## 一、为什么你需要一个博客？
+## 为什么你需要一个博客？
 优秀的程序员都在写博客，写博客有很多好处：
 - 帮助自己梳理、总结、理解知识点（个人提升）
 - 帮助别人理解知识点（好人一生平安）
 - 简历更好看，更多面试机会（升职加薪）
 
-## 二、什么是 VuePress，为什么要使用 VuePress ？
+## 什么是 VuePress，为什么要使用 VuePress ？
 **VuePress** 是尤雨溪（vue.js 框架作者）4月12日发布的一个全新的基于 vue 的静态网站生成器，实际上就是一个 vue 的 spa 应用，内置 webpack，可以用来写文档。详见 [VuePress中文网](https://vuepress.docschina.org/)
 
-其实类似的建站工具有很多，比如 WordPress、Jekyll、Hexo 等，其中 WordPress 需要自己购买虚拟主机，不考虑；Jekyll 是 Github-Page 默认支持的，听说操作比较复杂，没有用过不做过多评价了；Hexo 之前一直在用，但一直觉得主题不好看，风格不够简洁优雅。自从遇见 VuePress，嗯，就是它了~ 
+其实类似的建站工具有很多，比如 WordPress、Jekyll、Hexo 等，vuepress有哪些优势呢，基于vue，优秀的md语法支持，编译静态文件，良好的seo优化，响应式布局适应双端，可以挂载到GitPage。
 
 VuePress 有很多优点：
-- 界面简洁优雅（个人感觉比 HEXO 好看）
+- 界面简洁优雅
 - 容易上手（半小时能搭好整个项目）
 - 更好的兼容、扩展 Markdown 语法
 - 响应式布局，PC端、手机端
 - Google Analytics 集成
 - 支持 PWA
 
-## 三、开始搭建
+## 开始搭建
 
 ### 创建项目文件夹
 可以右键手动新建，也可以使用 mkdir 命令新建：
@@ -103,122 +91,7 @@ module.exports = {
 
     npm run dev
 
-## 四、一些小亮点
-完成了基础搭建后，就可以在docs目录下新建 `.md` 文件写文章了（.md 是 Markdown 语法文件，你需要知道 Markdown 的一些基本写法，很简单，这里给大家一份 [Markdown 语法整理大集合](https://www.jianshu.com/p/b03a8d7b1719)）
-
-下面给大家安利一些实用的方法。
-
-### 代码块高亮
-在 .md 文件中书写代码时，可在 \`\`\` 后增加 js、html、json等格式类型，代码块即可按照指定类型高亮
-
-代码：
-
-<pre class="language-text"><code>``` js
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```</code></pre>
-
-效果：
-``` js
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-
-### 自定义容器
-
-代码：
-
-    ::: tip 提示
-    this is a tip
-    :::
-
-    ::: warning 注意
-    this is a tip
-    :::
-
-    ::: danger 警告
-    this is a tip
-    :::
-
-效果：
-::: tip 提示
-this is a tip
-:::
-
-::: warning 注意
-this is a tip
-:::
-
-::: danger 警告
-this is a tip
-:::
-
-### 支持 Emoji
-代码：
-
-    :tada: :100: :bamboo: :gift_heart: :fire:
-
-效果：
-:tada: :100: :bamboo: :gift_heart: :fire:
-
-:point_right: 这里有一份 [Emoji 大全](https://www.webpagefx.com/tools/emoji-cheat-sheet/) 
-
-### 支持 PWA
-VuePress 默认支持 [PWA](https://segmentfault.com/a/1190000012353473)，配置方法如下：
-
-config.js 文件中增加
-
-```js
-head: [ // 注入到当前页面的 HTML <head> 中的标签
-  ['link', { rel: 'manifest', href: '/photo.jpg' }],
-  ['link', { rel: 'apple-touch-icon', href: '/photo.jpg' }],
-],
-serviceWorker: true // 是否开启 PWA
-```
-
-public 文件夹下新建 manifest.json 文件，添加
-
-```json
-{
-  "name": "张三",
-  "short_name": "张三",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#2196f3",
-  "description": "张三的个人主页",
-  "theme_color": "blue",
-  "icons": [
-    {
-      "src": "./photo.jpg",
-      "sizes": "144x144",
-      "type": "image/png"
-    }
-  ],
-  "related_applications": [
-    {
-      "platform": "web"
-    },
-    {
-      "platform": "play",
-      "url": "https://play.google.com/store/apps/details?id=cheeaun.hackerweb"
-    }
-  ]
-}
-```
-
-最后在 iPhone 的 safrai 浏览器中打开本网站，点击 `+添加到主屏幕` 就能在桌面看到一个像原生 App 一样的图标（感觉自己写了一个 App 有木有 :smile:）
-
-## 五、部署上线
+## 部署上线
 说了这么多都是在本地进行的，现在我们要把本地的内容推送到某个服务器上，这样只要有网络，就可以随时随地看自己的网站了。
 
 一般来说，有两种方案可供选择：
@@ -385,15 +258,123 @@ cd -
 
 写一些文章，记录一点生活，把自己的网站发给同学朋友看看吧！ :sunglasses:
 
-## 七、最后
+## 语法
+完成了基础搭建后，就可以在docs目录下新建 `.md` 文件写文章了（.md 是 Markdown 语法文件，你需要知道 Markdown 的一些基本写法，很简单，这里给大家一份 [Markdown 语法整理大集合](https://www.jianshu.com/p/b03a8d7b1719)）
+
+下面给大家安利一些实用的方法。
+
+### 代码块高亮
+在 .md 文件中书写代码时，可在 \`\`\` 后增加 js、html、json等格式类型，代码块即可按照指定类型高亮
+
+代码：
+
+<pre class="language-text"><code>``` js
+export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+```</code></pre>
+
+效果：
+``` js
+export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+```
+
+### 自定义容器
+
+代码：
+
+    ::: tip 提示
+    this is a tip
+    :::
+
+    ::: warning 注意
+    this is a tip
+    :::
+
+    ::: danger 警告
+    this is a tip
+    :::
+
+效果：
+::: tip 提示
+this is a tip
+:::
+
+::: warning 注意
+this is a tip
+:::
+
+::: danger 警告
+this is a tip
+:::
+
+### 支持 Emoji
+代码：
+
+    :tada: :100: :bamboo: :gift_heart: :fire:
+
+效果：
+:tada: :100: :bamboo: :gift_heart: :fire:
+
+:point_right: 这里有一份 [Emoji 大全](https://www.webpagefx.com/tools/emoji-cheat-sheet/) 
+
+### 支持 PWA
+VuePress 默认支持 [PWA](https://segmentfault.com/a/1190000012353473)，配置方法如下：
+
+config.js 文件中增加
+
+```js
+head: [ // 注入到当前页面的 HTML <head> 中的标签
+  ['link', { rel: 'manifest', href: '/photo.jpg' }],
+  ['link', { rel: 'apple-touch-icon', href: '/photo.jpg' }],
+],
+serviceWorker: true // 是否开启 PWA
+```
+
+public 文件夹下新建 manifest.json 文件，添加
+
+```json
+{
+  "name": "张三",
+  "short_name": "张三",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#2196f3",
+  "description": "张三的个人主页",
+  "theme_color": "blue",
+  "icons": [
+    {
+      "src": "./photo.jpg",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web"
+    },
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=cheeaun.hackerweb"
+    }
+  ]
+}
+```
+
+最后在 iPhone 的 safrai 浏览器中打开本网站，点击 `+添加到主屏幕` 就能在桌面看到一个像原生 App 一样的图标（感觉自己写了一个 App 有木有 :smile:）
+
+## 最后
 - 你需要一些 [Markdown](https://www.jianshu.com/p/b03a8d7b1719) 语法的基础知识；
 - 你需要一个 [Github](https://github.com/) 账号，并在里面创建两个 repo；
 - Github 需要添加 ssh key，第一次使用的同学遇到问题可以百度解决；
 - 个人博客不只可以用来写技术相关的内容，也可以有自己写的文章、随笔，甚至上传一些照片。
-
-我的 [vuepress-devkit](https://github.com/zhangyunchencc/vuepress-devkit.git) 已经开源放在了 Github 上，还有很多想要增加的功能，例如添加评论模块、自动生成侧边栏目录、增加网站分析工具等等，在这里欢迎大家 Star 或者 Fork 。
-
-以上，
-
-
-张韵晨 | Front End Engineer | 2018.10
