@@ -135,6 +135,9 @@ module.exports = {
 set -e
 
 # 推送源码到git仓库(仓库二)
+# git init
+# git add -A
+# git commit -m 'deploy'
 # git push -f <仓库二地址>
 
 # 生成静态文件
@@ -166,7 +169,7 @@ cd -
 #### :clap: 大功告成，运行发布命令
 运行根目录的deploy.sh
 
-此时打开https://<username>.github.io/即可看到自己的主页啦(ps:可能会有延迟)
+此时打开https://<username>.github.io/即可看到自己的主页。
 
 配置自己
 
