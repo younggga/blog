@@ -2,6 +2,7 @@ module.exports = {
     plugins: [ '@vuepress/blog', '@vuepress/back-to-top' ],
     permalink: "/:year/:month/:day/:slug",
     title: 'zzz\'s blog',
+    port: 2333,
     description: 'day day down!',
     head: [ // 注入到当前页面的 HTML <head> 中的标签
         [ 'link', { rel: 'icon', href: '/images/logo.ico' } ],
